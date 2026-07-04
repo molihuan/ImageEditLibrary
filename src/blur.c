@@ -5,11 +5,7 @@
 
 #include <mem_utils.h>
 #include <stdlib.h>
-#include <android/log.h>
 
-#define  LOG_TAG    "blur.c"
-#define  LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
-#define  LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 
 static int fastBlur(int radius, unsigned char* srcRed, unsigned char* srcGreen, unsigned char* srcBlue, int width, int height, unsigned char* dstRed, unsigned char* dstGreen, unsigned char* dstBlue) {
 	int windowSize = radius * 2 + 1;

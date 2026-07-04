@@ -5,6 +5,7 @@
 #ifndef IMAGEEDITOR_ANDROID_BEAUTY_H
 #define IMAGEEDITOR_ANDROID_BEAUTY_H
 
+#include <stdint.h>
 #include <string.h>
 #include <math.h>
 

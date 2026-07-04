@@ -16,11 +16,7 @@
 
 #include "colour_space.h"
 #include <math.h>
-#include <android/log.h>
 
-#define  LOG_TAG    "colour_space.c"
-#define  LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
-#define  LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 
 unsigned char convert(float val) {
 	return floorf((255 * val) + 0.5f);

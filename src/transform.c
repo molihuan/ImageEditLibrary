@@ -17,11 +17,8 @@
 #include <bitmap.h>
 #include <mem_utils.h>
 #include <stdlib.h>
-#include <android/log.h>
+#include "logger.h"
 
-#define  LOG_TAG    "transform.c"
-#define  LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
-#define  LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 
 void expandTransformListByOne(Bitmap* bitmap) {
 	if ((*bitmap).transformList.transforms == NULL) {

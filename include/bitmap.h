@@ -58,7 +58,10 @@ typedef struct {
 #define ANDROID_BITMAP_H
 
 #include <stdint.h>
+#ifdef __ANDROID__
 #include <jni.h>
+#elif defined(__OHOS__)
+#endif
 
 #ifdef __cplusplus
 extern "C" {
@@ -107,38 +110,10 @@ typedef struct {
     uint32_t    flags;      // 0 for now
 } AndroidBitmapInfo;
 
-/**
- * Given a java bitmap object, fill out the AndroidBitmapInfo struct for it.
- * If the call fails, the info parameter will be ignored.
- */
-int AndroidBitmap_getInfo(JNIEnv* env, jobject jbitmap,
-                          AndroidBitmapInfo* info);
-
-/**
- * Given a java bitmap object, attempt to lock the pixel address.
- * Locking will ensure that the memory for the pixels will not move
- * until the unlockPixels call, and ensure that, if the pixels had been
- * previously purged, they will have been restored.
- *
- * If this call succeeds, it must be balanced by a call to
- * AndroidBitmap_unlockPixels, after which time the address of the pixels should
- * no longer be used.
- *
- * If this succeeds, *addrPtr will be set to the pixel address. If the call
- * fails, addrPtr will be ignored.
- */
-int AndroidBitmap_lockPixels(JNIEnv* env, jobject jbitmap, void** addrPtr);
-
-/**
- * Call this to balance a successful call to AndroidBitmap_lockPixels.
- */
-int AndroidBitmap_unlockPixels(JNIEnv* env, jobject jbitmap);
 
 int decodeJpegChannel(char* jpegData, int jpegSize, int channel, unsigned char** channelPixels, int* srcWidth, int* srcHeight);
 
 int doTransforms(Bitmap* bitmap, int doRed, int doGreen, int doBlue);
-
-int resizeChannelBicubic(const unsigned char *src, int srcWidth, int srcHeight, unsigned char *dst, int dstWidth, int dstHeight);
 
 int resizeChannelBicubic(const unsigned char *src, int srcWidth, int srcHeight, unsigned char *dst, int dstWidth, int dstHeight);
 

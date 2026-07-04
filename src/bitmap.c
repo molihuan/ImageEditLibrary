@@ -14,10 +14,12 @@
  * limitations under the License.
  */
 
-
+#ifdef __ANDROID__
 #include <jni.h>
+#elif defined(__OHOS__)
+#endif
 #include <math.h>
-#include <android/log.h>
+#include "logger.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,9 +28,7 @@
 #include "bitmap.h"
 #include "nanojpeg.h"
 
-#define  LOG_TAG    "bitmap.c"
-#define  LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
-#define  LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
+
 
 
 static inline int rgb(int red, int green, int blue) {
